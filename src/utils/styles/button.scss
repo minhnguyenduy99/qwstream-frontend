@@ -1,0 +1,32 @@
+
+$button-hover-transtion: 0.1s ease-in;
+
+.button {
+  &.trans-hover {
+    transition: $button-hover-transtion;
+  }
+}
+
+@mixin has-border($theme) {
+  border: 2px solid $theme;
+}
+
+.button {
+  &.is-primary {
+    &.is-light {
+      color: $light;
+
+      &:hover {
+        color: $light;
+      }
+    }
+  }
+
+  &.is-secondary {
+    &.is-light {
+      color: $dark;
+    }
+  }
+
+  &.has-border-primary { @include has-border($primary) };
+}

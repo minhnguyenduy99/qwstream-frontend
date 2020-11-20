@@ -1,0 +1,8 @@
+
+
+.box {
+
+  &.shadow-primary {
+    box-shadow: 10px 20px rgba($primary-light, 0.5);
+  }
+}

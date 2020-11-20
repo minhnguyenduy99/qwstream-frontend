@@ -1,0 +1,12 @@
+
+.section-extend {
+  @extend .section;
+
+  @include tablet {
+    padding: $section-padding;
+  }
+  
+  @include mobile {
+    padding: $section-padding-medium;
+  }
+}
