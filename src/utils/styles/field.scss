@@ -55,3 +55,13 @@ input.input {
     border-radius: $radius-small;
   }
 }
+
+.field.is-horizontal {
+  & > .field-label {
+    padding-top: 0.65rem;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 150px;
+  }
+}

@@ -1,0 +1,36 @@
+
+
+
+.qw-form {
+  padding: 2rem;
+  > * {
+    width: 100%;
+  }
+
+  &-title {
+    display: inline-flex;
+    justify-content: center;
+    padding-bottom: 1.25rem;
+
+    span {
+      @extend .is-size-4;
+    }
+  }
+
+  &-content {
+
+    > form {
+      display: flex;
+      flex-direction: column;
+      > * {
+        &:not(:last-child) {
+          margin-bottom: 1.25rem;
+        }
+      }
+    }
+
+    input {
+      border-radius: $radius-small;
+    }
+  }
+}

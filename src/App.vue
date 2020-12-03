@@ -15,4 +15,8 @@
     }
   }
 }
+
+body {
+  @extend .has-navbar-fixed-top;
+}
 </style>

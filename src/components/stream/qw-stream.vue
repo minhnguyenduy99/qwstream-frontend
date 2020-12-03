@@ -2,7 +2,7 @@
   <div class="qw-stream">
     <div>
       <slot name="video">
-        <qw-video :video="stream.video" />
+        <qw-video-frame :video="stream.video" />
       </slot>
     </div>
     <div :class="getStreamInfoClass()">
@@ -15,17 +15,19 @@
 </template>
 
 <script>
-import QwVideo from "./qw-video";
+import QwVideoFrame from "./qw-video-frame";
 import QwStreamInfo from "./qw-stream-info";
 import QwStreamInfoSm from "./qw-stream-info-sm";
+import QwStreamInfoMixin from "./qw-stream-info.mixin";
 
 export default {
   name: "QwStream",
   components: {
-    QwVideo,
+    QwVideoFrame,
     QwStreamInfo,
     QwStreamInfoSm
   },
+  mixins: [QwStreamInfoMixin],
   props: {
     "stream-info-class": String,
     type: {
@@ -35,42 +37,6 @@ export default {
       validator: function(value) {
         return ["detail", "general"].includes(value);
       }
-    },
-    stream: {
-      title: {
-        type: String,
-        required: true,
-        default: ""
-      },
-      category: {
-        type: String,
-        required: true,
-        default: ""
-      },
-      tags: {
-        type: [],
-        required: true,
-        default: []
-      },
-      view_count: {
-        type: Number,
-        required: true,
-        default: 0
-      },
-      stream_time_start: {
-        type: Number,
-        required: true,
-        default: Date.now()
-      }
-    }
-  },
-  computed: {
-    displayedView() {
-      return `${this.stream.view_count} views`;
-    },
-    displayedStreamTime() {
-      const duration = Date.now() - this.stream.stream_time_start;
-      return `Stream ${new Date(duration).getHours()} ago`;
     }
   },
   methods: {

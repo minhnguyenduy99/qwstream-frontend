@@ -1,8 +1,66 @@
 
+$shadow-dark: 10px 10px rgba($dark, 0.5);
+$shadow-primary: 10px 20px rgba($primary-light, 0.5);
+
+$box-hover-transformX: 10px;
+$box-hover-transformY: 20px;
+
+$box-shadow-colors: (
+  "grey-light": $grey-light,
+  "live": $danger,
+  "primary-light": $primary-light
+);
 
 .box {
-
   &.shadow-primary {
-    box-shadow: 10px 20px rgba($primary-light, 0.5);
+    box-shadow: $shadow-primary;
+  }
+  &.shadow-dark {
+    box-shadow: $shadow-dark;
+  }
+}
+
+@mixin box-shadow-hover(
+  $name, 
+  $direction: "br",
+  $transformX: $box-hover-transformX, $transformY: $box-hover-transformY
+) 
+{
+  $transform: translate($transformX, $transformY);
+  $box-color: map-get($box-shadow-colors, $name);
+  
+  @if $direction == "tl" {
+    $transform: translate(-$transformX, -$transformY);
+  } @else if $direction == "tr" {
+    $transform: translate($transformX, -$transformY);
+  } @else if $direction == "bl" {
+    $transform: translate(-$transformX, $transformY);
+  }
+
+  .box {
+    position: relative;
+  
+    &.box-shadow-#{$name}-#{$direction} {
+      @extend .is-shadowless;
+
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $box-color;
+        transition: $ease;
+        border-radius: $radius-large;
+      }
+
+      &:hover {
+        &::after {
+          transform: $transform;
+        }
+      }
+    }
   }
 }

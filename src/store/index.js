@@ -1,49 +1,23 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { STATUS_OPTIONS } from "../utils/config";
+import users from "./users";
+import auth from "./auth";
+import createPersistedState from "vuex-persistedstate";
+import secureCookieStore from "./secure-cookie.store";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
-  state: {
-    user: {
-      room: undefined,
-      username: undefined,
-      status: STATUS_OPTIONS.available
-    },
-    currentRoom: [],
-    rooms: []
-  },
-  mutations: {
-    setRooms: (state, rooms) => {
-      state.rooms = rooms;
-    },
-    joinRoom: (state, { room, username }) => {
-      state.user = {
-        room,
-        username,
-        status: STATUS_OPTIONS.available
-      };
-    },
-    setCurrentRoom: (state, room) => {
-      state.currentRoom = room;
+let _apiContext;
+
+export default ({ apiContext }) => {
+  _apiContext = apiContext;
+
+  return new Vuex.Store({
+    plugins: [secureCookieStore({ modulePath: "auth" })],
+    // plugins: [secureCookieStore({ modulePath: "auth" })],
+    modules: {
+      users: users(_apiContext.stream),
+      auth: auth(_apiContext.stream)
     }
-  },
-  getters: {
-    currentUsers: state => {
-      return state.currentRoom;
-    }
-  },
-  actions: {
-    setRooms: ({ commit }, rooms) => {
-      commit("setRooms", rooms);
-    },
-    updateUsersInRoom: ({ commit }, room) => {
-      commit("setCurrentRoom", room);
-    },
-    joinRoom: ({ commit }, data) => {
-      commit("joinRoom", data);
-    }
-  },
-  modules: {}
-});
+  });
+};

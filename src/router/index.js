@@ -1,23 +1,53 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import StreamPage from "@/views/streaming.page.vue";
+
+import {
+  HomePage,
+  StreamPage,
+  CreateStreamPage,
+  LoginPage,
+  RegisterPage,
+  ProfilePage,
+  SearchPage
+} from "@/views";
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: "/",
+    name: "Home",
+    component: HomePage
+  },
   {
     path: "/stream",
     name: "Stream",
     component: StreamPage
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+    path: "/stream/create",
+    name: "CreateStream",
+    component: CreateStreamPage
+  },
+  {
+    path: "/register",
+    name: "Register",
+    component: RegisterPage
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: LoginPage
+  },
+  {
+    path: "/search",
+    name: "Search",
+    component: SearchPage
+  },
+  {
+    path: "/user/profile/:user_id",
+    name: "Profile",
+    component: ProfilePage
   }
 ];
 

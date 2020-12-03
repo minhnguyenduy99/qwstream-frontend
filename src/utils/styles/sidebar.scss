@@ -1,0 +1,10 @@
+
+
+.b-sidebar {
+  > .sidebar-content.is-fixed {
+    @include mobile {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}

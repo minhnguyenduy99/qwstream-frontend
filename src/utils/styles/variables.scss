@@ -4,15 +4,14 @@
 
 $primary: #0019A8;
 $primary-light: #5D74F5;
-$success: #AC8155;
-$success-light: #FFDC6B;
 $secondary: #AC8155;
 $secondary-light: #FFDC6B;
-$secondary-invert: #fff;
+$secondary-invert: #f0f0f0;
+$secondary-light-invert: #000;
 $secondary-dark: findDarkColor($secondary);
 
 $custom-colors: (
-  "secondary": ($secondary, $secondary-invert, $secondary-light, $secondary-dark)
+  "secondary": ($secondary, $secondary-invert, $secondary-light, $secondary-invert, $secondary-dark)
 );
 
 $radius-small: 5px;
@@ -20,9 +19,9 @@ $radius: 7px;
 $radius-large: 10px;
 $family-primary: "Roboto", "sans-serif";
 
-@import "~bulma/sass/utilities/_all.sass";
-@import "~bulma";
+$ease: 0.15s ease-out;
 
+@import "~bulma/sass/utilities/_all.sass";
 
 // section
 $section-padding: 0px 0.75rem 0 0;
@@ -30,13 +29,13 @@ $section-padding-medium: 0 0.75rem;
 $section-padding-large: 0 0.75rem;
 
 // Input 
-$input-radius: $radius-large;
+$input-radius: $radius-small;
 
 // Navbar
 $navbar-background-color: $primary-light;
 $navbar-item-color: $white;
-$navbar-item-img-max-height: 3rem;
-$navbar-padding-vertical: 0.25rem;
+$navbar-item-img-max-height: 1.75rem;
+$navbar-padding-vertical: 0;
 $navbar-padding-horizontal: 0;
 $navbar-dropdown-radius: $radius-large;
 $navbar-dropdown-background-color: $primary-light;
@@ -45,15 +44,20 @@ $navbar-dropdown-offset: 5px;
 $navbar-dropdown-boxed-radius: $radius-large;
 $navbar-dropdown-item-hover-color: $white;
 
+// Modal
+$modal-card-body-padding: 1.5rem 0;
+
 // dropdown
 $dropdown-content-offset: 10px;
 
-@import "~bulma/sass/utilities/_all.sass";
+// steps
+$steps-vertical-padding: 0;
+
+// Sidebar
+$sidebar-box-shadow: 10px 20px rgba($primary-light, 0.5);
+
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
-
-
-
 
 
 

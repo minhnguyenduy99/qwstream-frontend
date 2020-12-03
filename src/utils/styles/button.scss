@@ -25,8 +25,33 @@ $button-hover-transtion: 0.1s ease-in;
   &.is-secondary {
     &.is-light {
       color: $dark;
+
+      &:hover {
+        color: $dark;
+      }
     }
   }
 
   &.has-border-primary { @include has-border($primary) };
+}
+
+.button.icon-button {
+  padding: 0;
+  background: transparent;
+  align-items: flex-start;
+  border: 0;
+
+  &:hover {
+    background: transparent;
+  }
+
+  &:active {
+    background: transparent;
+  }
+
+  .icon {
+    &:nth-child(1) {
+      margin: -4px 0 0 0;
+    }
+  }
 }

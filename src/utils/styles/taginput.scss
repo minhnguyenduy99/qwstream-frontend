@@ -1,0 +1,10 @@
+
+
+
+.taginput {
+  .tag {
+    &.is-secondary.is-light {
+      color: $secondary-light-invert;
+    }
+  }
+}

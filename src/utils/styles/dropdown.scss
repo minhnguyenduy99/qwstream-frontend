@@ -1,0 +1,24 @@
+
+
+.dropdown {
+
+  &.is-primary.is-light {
+    .dropdown-menu {
+    
+      .dropdown-content {
+        background: $primary-light;
+
+        .dropdown-item {
+          background: transparent;
+          color: $white;
+          box-sizing: border-box;
+
+          &:hover {
+            background: $primary;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
